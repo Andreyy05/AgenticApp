@@ -1,6 +1,6 @@
 # Agent Execution Trace: Run 2: Tokyo Budget Trip with Tool Error & Replanning
 
-- **Run ID**: `run_1795088685_tokyo`
+- **Run ID**: `run_1795089122_tokyo`
 - **Destination**: **Tokyo** (2026-09-15 to 2026-09-19)
 - **Budget**: **$1350.00 USD**
 - **Pace**: Moderate | **Dietary**: None

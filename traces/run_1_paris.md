@@ -1,6 +1,6 @@
 # Agent Execution Trace: Run 1: Paris Cultural 4-Day Trip
 
-- **Run ID**: `run_1795088685_paris`
+- **Run ID**: `run_1795089122_paris`
 - **Destination**: **Paris** (2026-06-10 to 2026-06-13)
 - **Budget**: **$900.00 USD**
 - **Pace**: Moderate | **Dietary**: vegetarian

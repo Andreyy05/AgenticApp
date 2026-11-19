@@ -185,7 +185,7 @@ def main():
         return
 
     console.print(Panel.fit(
-        "[bold cyan]Homework 3: Agentic Application — Travel-Planner Agent[/bold cyan]\n"
+        "[bold cyan]Travel-Planner Agent — Autonomous Tool-Calling System[/bold cyan]\n"
         "Features: Explicit Agent Loop · Tool Calling · Error Recovery/Replanning · Structured Pydantic Outputs",
         border_style="cyan"
     ))
@@ -243,7 +243,7 @@ def main():
     # ========================================================================
     # Comparison Summary Table
     # ========================================================================
-    console.print("\n[bold]=== HOMEWORK 3 SUBMISSION SUMMARY: 2 REQUIRED RUNS ===[/bold]")
+    console.print("\n[bold]=== AGENT EXECUTION SUMMARY: 2 EVALUATION RUNS ===[/bold]")
     summary_table = Table(title="Runs Comparison")
     summary_table.add_column("Run", style="bold")
     summary_table.add_column("Destination")

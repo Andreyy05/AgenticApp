@@ -1,4 +1,4 @@
-Agentic Application: Travel-Planner Agent
+# Travel-Planner Agent — Autonomous Tool-Calling System
 
 An autonomous, tool-calling agent implementation with an **explicit agent loop**, **structured Pydantic outputs**, **five domain tools**, **error handling & dynamic replanning**, and **complete execution traces** for multi-day travel planning.
 
@@ -82,15 +82,29 @@ The application separates user inputs, the explicit agent control loop, tool exe
 
 ---
 
+## 📋 Core System Capabilities
+
+| Capability | Implementation Details | Status |
+|---|---|---|
+| **Explicit Agent Loop** | State-machine loop (`FETCH_WEATHER` → `LOOKUP_FLIGHT` → `LOOKUP_LODGING` → `LOOKUP_ATTRACTIONS` → `ASSEMBLE_ITINERARY` → `TERMINATED`) in `agent_loop.py` | ✅ Complete |
+| **Structured Outputs** | Pydantic v2 schemas: `TripItinerary`, `DayPlan`, `ActivitySlot`, `BudgetSummary`, `FlightOption`, `LodgingOption` in `models.py` | ✅ Complete |
+| **At Least Four Tools** | 5 tools implemented in `tools.py`: `weather_lookup`, `flight_lookup`, `lodging_lookup`, `attractions_lookup`, `calendar_day_planner` | ✅ Complete (5 tools) |
+| **Tool Error Handling & Replanning** | Automatic detection of tool errors (e.g. `NO_FLIGHTS_UNDER_BUDGET`), budget rebalancing, fallback lodging selection, and clean termination | ✅ Complete |
+| **Clean Termination** | Deterministic termination condition verifying full itinerary construction and budget validation | ✅ Complete |
+| **Two Successful Run Traces** | Both JSON and Markdown traces saved in `traces/run_1_paris.*` and `traces/run_2_tokyo.*` | ✅ Complete |
+
+---
+
 ## 📁 Repository Structure
 
 ```
-D:\CODING\Agentic_Homework3/
+AgenticApp/
 ├── models.py             # Pydantic v2 schemas (TripInput, DayPlan, BudgetSummary, TripItinerary, RunTrace)
-├── tools.py              # 5 domain tools with input validation and deliberate edge-case error responses
+├── tools.py              # 5 domain tools with input validation and edge-case error responses
 ├── agent_loop.py         # Explicit finite-state agent loop with error handling and budget replanning
-├── run_agent.py          # CLI runner: executes 2 homework traces + interactive custom planning mode
+├── run_agent.py          # CLI runner: executes evaluation traces + interactive custom planning mode
 ├── Spustit_Agenta.bat    # Windows one-click interactive launcher
+├── requirements.txt      # Project dependencies (pydantic, rich)
 ├── tests/
 │   └── test_agent.py     # Unittest test suite (6 passing test cases)
 ├── traces/
@@ -98,7 +112,7 @@ D:\CODING\Agentic_Homework3/
 │   ├── run_1_paris.md    # Run 1 formatted Markdown execution trace
 │   ├── run_2_tokyo.json  # Run 2 raw JSON trace (Tokyo error recovery & replanning)
 │   └── run_2_tokyo.md    # Run 2 formatted Markdown execution trace
-└── README.md             # This comprehensive engineering documentation
+└── README.md             # Complete engineering documentation
 ```
 
 ---
@@ -157,24 +171,26 @@ The agent does **not** rely on uncontrolled recursive loops. Instead, it maintai
 ### 1. Quick One-Click Setup (Windows)
 Double-click:
 ```
-D:\CODING\Agentic_Homework3\Spustit_Agenta.bat
+Spustit_Agenta.bat
 ```
-This presents an interactive menu to run the official traces, start the interactive custom planner, or run unit tests.
+This presents an interactive menu to run the evaluation traces, start the interactive custom planner, or run unit tests.
 
 ### 2. Manual Command Line Setup
 
 ```powershell
-# 1. Navigate to the project directory
-cd D:\CODING\Agentic_Homework3
+# 1. Clone repository
+git clone https://github.com/Andreyy05/AgenticApp.git
+cd AgenticApp
 
-# 2. Activate the virtual environment
+# 2. Setup virtual environment & activate
+python -m venv .venv
 .\.venv\Scripts\activate
 # (On Linux/macOS: source .venv/bin/activate)
 
-# 3. If installing fresh dependencies in a new environment:
-pip install pydantic rich
+# 3. Install dependencies
+pip install -r requirements.txt
 
-# 4. Run the two homework traces
+# 4. Run the evaluation traces
 python run_agent.py
 
 # 5. Run the interactive planner
@@ -212,7 +228,7 @@ python -m unittest tests/test_agent.py -v
 - **Activities**: Louvre Museum, Musée d'Orsay, Sainte-Chapelle, Bakery Tasting (`$144.00 USD`)
 - **Estimated Meals**: 4 days × $45.00 = `$180.00 USD`
 - **Budget Result**: **$789.00 USD spent / $900.00 budget** (`$111.00 remaining balance`, `within_budget: true`)
-- **Full Trace**: See [`traces/run_1_paris.md`](file:///D:/CODING/Agentic_Homework3/traces/run_1_paris.md) and [`traces/run_1_paris.json`](file:///D:/CODING/Agentic_Homework3/traces/run_1_paris.json).
+- **Full Trace**: See [`traces/run_1_paris.md`](traces/run_1_paris.md) and [`traces/run_1_paris.json`](traces/run_1_paris.json).
 
 ---
 
@@ -241,7 +257,7 @@ python -m unittest tests/test_agent.py -v
 - **Activities**: teamLab Borderless, Akihabara District, Tsukiji Food Tour, Skytree (`$165.00 USD`)
 - **Estimated Meals**: 5 days × $35.00 = `$175.00 USD`
 - **Budget Result**: **$1210.00 USD spent / $1350.00 budget** (`$140.00 remaining balance`, `within_budget: true`)
-- **Full Trace**: See [`traces/run_2_tokyo.md`](file:///D:/CODING/Agentic_Homework3/traces/run_2_tokyo.md) and [`traces/run_2_tokyo.json`](file:///D:/CODING/Agentic_Homework3/traces/run_2_tokyo.json).
+- **Full Trace**: See [`traces/run_2_tokyo.md`](traces/run_2_tokyo.md) and [`traces/run_2_tokyo.json`](traces/run_2_tokyo.json).
 
 ---
 
@@ -289,9 +305,3 @@ Ran 6 tests in 0.004s
 
 OK
 ```
-
----
-
-## 🔒 Local Execution Guarantee
-
-This project is configured strictly for local development and academic evaluation. **No remote Git repositories or cloud endpoints are targeted.** All data, logs, and artifacts reside strictly within `D:\CODING\Agentic_Homework3`.

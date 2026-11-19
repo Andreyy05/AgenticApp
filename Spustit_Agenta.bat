@@ -1,15 +1,15 @@
 @echo off
 chcp 65001 > nul
-title Homework 3: Travel-Planner Agent
+title Travel-Planner Agent
 cd /d "%~dp0"
 
 :menu
 cls
 echo =====================================================================
-echo           HOMEWORK 3: AGENTIC TRAVEL-PLANNER APPLICATION
+echo           AGENTIC TRAVEL-PLANNER APPLICATION
 echo =====================================================================
 echo.
-echo  [1] Spustit oficialni behy do skoly (Run 1 Pariz + Run 2 Tokio)
+echo  [1] Spustit ukazkove behy (Run 1 Pariz + Run 2 Tokio)
 echo  [2] Interaktivni rezim (naplanovat si vlastni vylet zadanim udaju)
 echo  [3] Spustit automaticke Unit Testy
 echo  [4] Otevrit slozku s vysledky (traces)
@@ -31,7 +31,7 @@ goto menu
 :run_official
 cls
 echo =====================================================================
-echo Spoustim oficialni behy a generuji traces...
+echo Spoustim ukazkove behy a generuji traces...
 echo =====================================================================
 echo.
 .\.venv\Scripts\python run_agent.py
