@@ -1,0 +1,274 @@
+{
+  "run_id": "run_1795088685_paris",
+  "scenario_name": "Run 1: Paris Cultural 4-Day Trip",
+  "input_parameters": {
+    "destination": "Paris",
+    "origin": "PRG",
+    "start_date": "2026-06-10",
+    "end_date": "2026-06-13",
+    "budget_usd": 900.0,
+    "pace": "moderate",
+    "interests": [
+      "art",
+      "museum",
+      "history",
+      "food"
+    ],
+    "dietary": [
+      "vegetarian"
+    ]
+  },
+  "total_steps": 5,
+  "encountered_errors": false,
+  "error_descriptions": [],
+  "replanning_actions_taken": [],
+  "steps": [
+    {
+      "step_number": 1,
+      "agent_state": "FETCH_WEATHER",
+      "thought": "Initiating travel planning for Paris. First step: check the weather forecast from 2026-06-10 to 2026-06-13 to optimize outdoor vs. indoor activity scheduling.",
+      "tool_called": "weather_lookup",
+      "tool_arguments": {
+        "destination": "Paris",
+        "start_date": "2026-06-10",
+        "end_date": "2026-06-13"
+      },
+      "tool_success": true,
+      "tool_output": "Retrieved 4 days forecast. Average temp 17°C.",
+      "error_message": null,
+      "replanning_note": null
+    },
+    {
+      "step_number": 2,
+      "agent_state": "LOOKUP_FLIGHT",
+      "thought": "Weather acquired. Now checking flights from PRG to Paris for 2026-06-10 -> 2026-06-13 with target budget cap $315.00.",
+      "tool_called": "flight_lookup",
+      "tool_arguments": {
+        "origin": "PRG",
+        "destination": "Paris",
+        "departure_date": "2026-06-10",
+        "return_date": "2026-06-13",
+        "max_price_usd": 315.0
+      },
+      "tool_success": true,
+      "tool_output": "Booked Air France AF1234 for $210.00.",
+      "error_message": null,
+      "replanning_note": null
+    },
+    {
+      "step_number": 3,
+      "agent_state": "LOOKUP_LODGING",
+      "thought": "Flight secured (Air France $210.00). Now searching accommodations in Paris for 3 nights. Searching standard hotels.",
+      "tool_called": "lodging_lookup",
+      "tool_arguments": {
+        "destination": "Paris",
+        "checkin_date": "2026-06-10",
+        "checkout_date": "2026-06-13",
+        "max_nightly_rate_usd": null
+      },
+      "tool_success": true,
+      "tool_output": "Selected 'Montmartre Cozy Studio' (Apartment) in Montmartre. Total: $255.00.",
+      "error_message": null,
+      "replanning_note": null
+    },
+    {
+      "step_number": 4,
+      "agent_state": "LOOKUP_ATTRACTIONS",
+      "thought": "Flight and lodging secured. Querying attractions matching traveler interests: ['art', 'museum', 'history', 'food'] at pace 'moderate'.",
+      "tool_called": "attractions_lookup",
+      "tool_arguments": {
+        "destination": "Paris",
+        "interests": [
+          "art",
+          "museum",
+          "history",
+          "food"
+        ],
+        "pace": "moderate"
+      },
+      "tool_success": true,
+      "tool_output": "Found 5 attractions matching preferences.",
+      "error_message": null,
+      "replanning_note": null
+    },
+    {
+      "step_number": 5,
+      "agent_state": "TERMINATING",
+      "thought": "Itinerary assembled and verified against budget. Terminating agent cleanly.",
+      "tool_called": "calendar_day_planner",
+      "tool_arguments": {
+        "destination": "Paris",
+        "budget": 900.0
+      },
+      "tool_success": true,
+      "tool_output": "Trip itinerary successfully generated. Total spent: $789.00 / $900.00.",
+      "error_message": null,
+      "replanning_note": null
+    }
+  ],
+  "final_itinerary": {
+    "destination": "Paris",
+    "travel_dates": "2026-06-10 to 2026-06-13",
+    "total_days": 4,
+    "flight": {
+      "airline": "Air France",
+      "flight_number": "AF1234",
+      "departure": "09:15",
+      "arrival": "11:00",
+      "price_usd": 210.0,
+      "stops": 0
+    },
+    "lodging": {
+      "name": "Montmartre Cozy Studio",
+      "type": "Apartment",
+      "neighborhood": "Montmartre",
+      "nightly_rate_usd": 85.0,
+      "total_cost_usd": 255.0,
+      "rating": 4.5
+    },
+    "day_by_day": [
+      {
+        "day_number": 1,
+        "date": "2026-06-10",
+        "weather_summary": "Sunny, 17°C - Light breathable layers, sunglasses",
+        "morning": {
+          "period": "Morning",
+          "title": "Louvre Museum Masterpieces",
+          "category": "Museum",
+          "cost_usd": 22.0,
+          "description": "Explore the Mona Lisa, Venus de Milo and world-class French art collection. (Ideal morning conditions).",
+          "weather_suitable": true
+        },
+        "afternoon": {
+          "period": "Afternoon",
+          "title": "Musée d'Orsay Impressionist Tour",
+          "category": "Museum",
+          "cost_usd": 18.0,
+          "description": "World's premier collection of Impressionist works in a converted railway station.",
+          "weather_suitable": true
+        },
+        "evening": {
+          "period": "Evening",
+          "title": "Local Dining & Evening Stroll (vegetarian)",
+          "category": "Dining & Leisure",
+          "cost_usd": 0.0,
+          "description": "Enjoy dinner in neighborhood near Montmartre. Sample local specialties.",
+          "weather_suitable": true
+        },
+        "estimated_food_cost_usd": 45.0,
+        "day_total_usd": 85.0
+      },
+      {
+        "day_number": 2,
+        "date": "2026-06-11",
+        "weather_summary": "Light Rain / Showers, 18°C - Waterproof jacket or umbrella, warm layer",
+        "morning": {
+          "period": "Morning",
+          "title": "French Bakery & Patisserie Tasting",
+          "category": "Food & Drink",
+          "cost_usd": 25.0,
+          "description": "Sample warm croissants, artisanal baguettes, and delicate macarons. (Indoor suitable for rain).",
+          "weather_suitable": true
+        },
+        "afternoon": {
+          "period": "Afternoon",
+          "title": "Sainte-Chapelle Stained Glass",
+          "category": "History",
+          "cost_usd": 14.0,
+          "description": "Radiant 13th-century Gothic chapel famous for jewel-like stained glass windows.",
+          "weather_suitable": true
+        },
+        "evening": {
+          "period": "Evening",
+          "title": "Local Dining & Evening Stroll (vegetarian)",
+          "category": "Dining & Leisure",
+          "cost_usd": 0.0,
+          "description": "Enjoy dinner in neighborhood near Montmartre. Sample local specialties.",
+          "weather_suitable": true
+        },
+        "estimated_food_cost_usd": 45.0,
+        "day_total_usd": 84.0
+      },
+      {
+        "day_number": 3,
+        "date": "2026-06-12",
+        "weather_summary": "Partly Cloudy, 19°C - Casual comfortable clothing, light sweater for evening",
+        "morning": {
+          "period": "Morning",
+          "title": "Louvre Museum Masterpieces",
+          "category": "Museum",
+          "cost_usd": 22.0,
+          "description": "Explore the Mona Lisa, Venus de Milo and world-class French art collection. (Ideal morning conditions).",
+          "weather_suitable": true
+        },
+        "afternoon": {
+          "period": "Afternoon",
+          "title": "Musée d'Orsay Impressionist Tour",
+          "category": "Museum",
+          "cost_usd": 18.0,
+          "description": "World's premier collection of Impressionist works in a converted railway station.",
+          "weather_suitable": true
+        },
+        "evening": {
+          "period": "Evening",
+          "title": "Local Dining & Evening Stroll (vegetarian)",
+          "category": "Dining & Leisure",
+          "cost_usd": 0.0,
+          "description": "Enjoy dinner in neighborhood near Montmartre. Sample local specialties.",
+          "weather_suitable": true
+        },
+        "estimated_food_cost_usd": 45.0,
+        "day_total_usd": 85.0
+      },
+      {
+        "day_number": 4,
+        "date": "2026-06-13",
+        "weather_summary": "Clear Sky, 17°C - Comfortable walking shoes, sun hat",
+        "morning": {
+          "period": "Morning",
+          "title": "Montmartre & Sacré-Cœur Walking Tour",
+          "category": "Walking Tour",
+          "cost_usd": 0.0,
+          "description": "Stroll cobblestone bohemian streets, artists' square and hilltop basilica. (Ideal morning conditions).",
+          "weather_suitable": true
+        },
+        "afternoon": {
+          "period": "Afternoon",
+          "title": "French Bakery & Patisserie Tasting",
+          "category": "Food & Drink",
+          "cost_usd": 25.0,
+          "description": "Sample warm croissants, artisanal baguettes, and delicate macarons.",
+          "weather_suitable": true
+        },
+        "evening": {
+          "period": "Evening",
+          "title": "Local Dining & Evening Stroll (vegetarian)",
+          "category": "Dining & Leisure",
+          "cost_usd": 0.0,
+          "description": "Enjoy dinner in neighborhood near Montmartre. Sample local specialties.",
+          "weather_suitable": true
+        },
+        "estimated_food_cost_usd": 45.0,
+        "day_total_usd": 70.0
+      }
+    ],
+    "budget_summary": {
+      "flights_cost_usd": 210.0,
+      "lodging_cost_usd": 255.0,
+      "activities_cost_usd": 144.0,
+      "meals_cost_usd": 180.0,
+      "total_spent_usd": 789.0,
+      "allocated_budget_usd": 900.0,
+      "remaining_usd": 111.0,
+      "within_budget": true
+    },
+    "packing_and_travel_tips": [
+      "Expected weather varies between 17°C and 19°C.",
+      "Comfortable broken-in walking shoes are essential.",
+      "Pre-book museum time slots online to skip queue lines.",
+      "Dietary focus: vegetarian."
+    ],
+    "agent_notes": "Plan constructed for Paris. Dietary: vegetarian. Pace: moderate."
+  },
+  "clean_termination": true
+}
