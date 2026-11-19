@@ -1,4 +1,4 @@
-# Homework 3 — Agentic Application: Travel-Planner Agent
+Agentic Application: Travel-Planner Agent
 
 An autonomous, tool-calling agent implementation with an **explicit agent loop**, **structured Pydantic outputs**, **five domain tools**, **error handling & dynamic replanning**, and **complete execution traces** for multi-day travel planning.
 
